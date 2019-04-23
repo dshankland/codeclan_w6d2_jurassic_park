@@ -65,14 +65,13 @@ Park.prototype.dietObject = function () {
   var diets = {};
   for (var dinosaur of this.dinosaurs) {
       let diet = dinosaur.diet;
-      let keys = Object.keys(diets);
-      if (keys.include(diet)) {
-        diets.diet += 1;
+      if (diets[diet] >= 0) {
+        diets[diet] += 1;
       } else {
-        diets.diet = 1
+        diets[diet] = 1
       };
-      console.log(diets);
     };
+  return diets;
 };
 
 module.exports = Park;
