@@ -60,6 +60,24 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, expected);
   });
 
+  it('calculate the total number of visitors per day', function(){
+    const expected = 100;
+    const actual = park.visitorsPerDay();
+    assert.strictEqual(actual, expected);
+  });
+
+  it('calculate the total number of visitors per year', function(){
+    const expected = 100*365;
+    const actual = park.visitorsPerYear();
+    assert.strictEqual(actual, expected);
+  });
+
+  it('calculate the total revenue from ticket sales for one year', function(){
+    const expected = 100*365*100;
+    const actual = park.ticketSalesPerYear();
+    assert.strictEqual(actual, expected);
+  });
+
   it('should be able to remove all dinosaurs of a particular species', function(){
     park.addDinosaur(dinosaur5);
     const expected = [dinosaur1, dinosaur2]
@@ -68,4 +86,9 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, expected);
   });
 
+  it('provide an object containing each of the diet types and the number of dinosaurs in the park of that diet type example: { \'carnivore\': 5, \'herbivore\': 2, \'omnivore\': 1 }', function(){
+    const expected = {'carnivore': 2, 'herbivore': 1}
+    const actual = park.dietObject()
+    assert.deepStrictEqual(actual, expected);
+  });
 });

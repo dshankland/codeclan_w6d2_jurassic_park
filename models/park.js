@@ -37,9 +37,42 @@ Park.prototype.dinosaurBySpecies = function (species) {
   return dinosaurs;
 };
 
+Park.prototype.visitorsPerDay = function () {
+  var visitors = 0;
+  for (var dinosaur of this.dinosaurs) {
+      visitors += dinosaur.guestsAttractedPerDay;
+    };
+  return visitors;
+};
+
+Park.prototype.visitorsPerYear = function () {
+  let visitors = this.visitorsPerDay() * 365;
+  return visitors;
+};
+
+Park.prototype.ticketSalesPerYear = function () {
+  let visitors = this.visitorsPerYear();
+  let ticketSales = visitors * this.ticketPrice;
+  return ticketSales;
+};
+
 Park.prototype.removeDinosaurBySpecies = function (species) {
   let result = this.dinosaurs.filter(dinosaur => dinosaur.species != species);
   this.dinosaurs = result;
+};
+
+Park.prototype.dietObject = function () {
+  var diets = {};
+  for (var dinosaur of this.dinosaurs) {
+      let diet = dinosaur.diet;
+      let keys = Object.keys(diets);
+      if (keys.include(diet)) {
+        diets.diet += 1;
+      } else {
+        diets.diet = 1
+      };
+      console.log(diets);
+    };
 };
 
 module.exports = Park;
