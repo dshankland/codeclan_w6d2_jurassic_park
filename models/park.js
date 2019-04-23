@@ -64,11 +64,11 @@ Park.prototype.removeDinosaurBySpecies = function (species) {
 Park.prototype.dietObject = function () {
   var diets = {};
   for (var dinosaur of this.dinosaurs) {
-      let diet = dinosaur.diet;
-      if (diets[diet] >= 0) {
-        diets[diet] += 1;
+      // let diet = dinosaur.diet;
+      if (diets[dinosaur.diet] >= 0) {
+        diets[dinosaur.diet] += 1;
       } else {
-        diets[diet] = 1
+        diets[dinosaur.diet] = 1
       };
     };
   return diets;
