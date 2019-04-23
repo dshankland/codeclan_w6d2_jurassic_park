@@ -25,4 +25,21 @@ Park.prototype.mostPopularDinosaur = function () {
   return mostPopularDinosaur;
 };
 
+Park.prototype.dinosaurBySpecies = function (species) {
+  // var dinosaurs = []
+  // for (var dinosaur of this.dinosaurs) {
+  //   if (dinosaur.species == species) {
+  //     dinosaurs.push(dinosaur);
+  //   }
+  // };
+  // refactored using filter
+  let dinosaurs = this.dinosaurs.filter(dinosaur => dinosaur.species == species);
+  return dinosaurs;
+};
+
+Park.prototype.removeDinosaurBySpecies = function (species) {
+  let result = this.dinosaurs.filter(dinosaur => dinosaur.species != species);
+  this.dinosaurs = result;
+};
+
 module.exports = Park;
