@@ -11,6 +11,7 @@ describe('Park', function() {
   beforeEach(function () {
     dinosaur1 = new Dinosaur('t-rex', 'carnivore', 50);
     dinosaur2 = new Dinosaur('Dippy', 'herbivore', 10);
+    dinosaur3 = new Dinosaur('raptor', 'carnivore', 40);
     dinosaurs = [dinosaur1]
     park = new Park('Dino Emporium', 100, dinosaurs);
   })
@@ -37,9 +38,21 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, expected);
   });
 
-  it('should be able to remove a dinosaur from its collection');
+  it('should be able to remove a dinosaur from its collection', function(){
+    park.addDinosaur(dinosaur2);
+    park.removeDinosaur(dinosaur1);
+    const expected = [dinosaur2];
+    const actual = park.dinosaurs;
+    assert.deepStrictEqual(actual, expected);
+  });
 
-  it('should be able to find the dinosaur that attracts the most visitors');
+  it('should be able to find the dinosaur that attracts the most visitors', function(){
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    const expected = dinosaur1;
+    const actual = park.mostPopularDinosaur();
+    assert.deepStrictEqual(actual, expected);
+  });
 
   it('should be able to find all dinosaurs of a particular species');
 
